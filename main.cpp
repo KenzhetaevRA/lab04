@@ -37,7 +37,7 @@ void printbyte(uint8_t byte){
 void print_in_hex( const void* data, size_t size){
     const uint8_t* p = reinterpret_cast<const uint8_t*>(data);
     for(size_t i=0; i<size; i++ ){
-        printbyte(p[i]);
+        printbyte(p[i]); cout<<"  ";
     }
 }
 struct student{
@@ -51,6 +51,7 @@ struct student{
 
 int main() {
     student s[3];
+
     s[0].ball=4.3;
     strcpy(s[0].name,"KudashkinA");
     s[0].sex=1;
@@ -71,13 +72,11 @@ int main() {
     s[2].srok=0;
     s[2].year=2016;
     s[2].batya=&s[0];
+
+
     for(size_t i=0;i<3;i++) {
-        cout << s[i].ball;
-        cout << s[i].name;
-        cout << s[i].sex;
-        cout << s[i].srok;
-        cout << s[i].year;
-        cout << s[i].batya;
+        print_in_hex(&s[i], sizeof(s[i]));
+        cout<<"\n";
     }
     return 0;
 }
